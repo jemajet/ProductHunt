@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+	<br />
+	<div class="alert alert-warning" role="alert">
+		{{error}}
+	</div>
+{% endif %}
+
+<h1>Create Product</h1>
+
+<form method="POST" action="{% url 'create' %}" enctype="multipart/form-data">
+	{% csrf_token %}
+	Product Title:
+	<br />
+	<input type="text" name="title" />
+	<br />
+
+	URL:
+	<br />
+	<input type="text" name="url" />
+	<br />
+
+	Product Description:
+	<br />
+	<textarea rows=4, cols="60" name="body" /></textarea>
+	<br />
+
+	Icon:
+	<br />
+	<input type="file" name="icon" />
+	<br />
+
+	Image:
+	<br />
+	<input type="file" name="image" />
+	<br />
+
+
+
+	<br />
+	<input class="btn btn-primary" type="submit" value="Add Product" />
+</form>
+
+{% endblock %}
+
+<!--     title = models.CharField(max_length=250)
+    url = models.TextField()
+    pub_date = models.DateTimeField()
+    votes_total = models.IntegerField(default=1)
+    image = models.ImageField(upload_to='images/')
+    icon = models.ImageField(upload_to='images/') -->
